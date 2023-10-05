@@ -26,7 +26,12 @@ func _ready():
 	reset()
 
 func _physics_process(_delta):
-	pass
+	if Global.color_rotate >= 0:
+		Global.color_rotate -= color_rotate_index
+		Global.color_rotate_index *= 1.05
+	else:
+		Global.color_rotate_index = 0.1
+	Global.sway_index += Global.sway_period
 
 func _unhandled_input(event):
 	if event.is_action_pressed("menu"):
